@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: travelo-config
+data:
+  dbname: {{ .Values.database.name }}

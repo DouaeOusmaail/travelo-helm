@@ -1,0 +1,26 @@
+database:
+  image: mysql:8.0
+  name: travelo_db
+  storage: 1Gi
+  username: root
+  password: ""
+
+backend:
+  image: douaeousmaail/travelo-backend:1.0.0
+  replicas: 2
+
+frontend:
+  image: douaeousmaail/travelo-frontend:1.0.0
+  replicas: 2
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+ingress:
+  className: nginx
+  host: travelo-helm.test

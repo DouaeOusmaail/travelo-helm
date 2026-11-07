@@ -1,0 +1,23 @@
+{{- if gt (int .Values.backend.replicas) 1 }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: travelo-backend-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: travelo-backend
+---
+{{- end }}
+{{- if gt (int .Values.frontend.replicas) 1 }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: travelo-frontend-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: travelo-frontend
+{{- end }}
